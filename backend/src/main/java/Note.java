@@ -17,7 +17,8 @@ import java.time.OffsetDateTime;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
-
+@Setter
+@Getter
 public class Note {
     private int id; // авто-генерация
     private String title; // не null
@@ -27,30 +28,33 @@ public class Note {
     private PriorityType typeOfPriority;
     private OffsetDateTime timeOfReminder;
 
-    public Note createFromInput(Message message) {
+    public Note(int id, String messageTitle, String messageDescription, OffsetDateTime offsetDateTime, String messageTypeOfNote, String messageTypeOfPriority, String messageTypeOfReminder) {
+    }
+
+    public static Note createFromInput(Message message) {
         return new Note( // просто заполняем коллекцию мессаджем.
                 0,
                 getMessageTitle(message),
                 getMessageDescription(message),
-                0,
+                null,
                 getMessageTypeOfNote(message),
                 getMessageTypeOfPriority(message),
                 getMessageTypeOfReminder(message));
     }
 
-    public String getMessageTitle(Message message) {
+    public static String getMessageTitle(Message message) {
         return message.getMessage("Введите заголовок заметки: ").toString();
     }
-    public String getMessageDescription(Message message) {
+    public static String getMessageDescription(Message message) {
         return message.getMessage("Введите описание заметки: ").toString();
     }
-    public String getMessageTypeOfNote(Message message) {
+    public static String getMessageTypeOfNote(Message message) {
         return message.getMessage("Введите вид заметки: ").toString();
     }
-    public String getMessageTypeOfPriority(Message message) {
+    public static String getMessageTypeOfPriority(Message message) {
         return message.getMessage("Введите приоритетность заметки: ").toString();
     }
-    public String getMessageTypeOfReminder(Message message) {
+    public static String getMessageTypeOfReminder(Message message) {
         return message.getMessage("Введите время напоминания: ").toString();
     }
 
