@@ -1,4 +1,4 @@
-package com.example.noteIT;
+package com.noteIT;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
